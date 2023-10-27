@@ -3,6 +3,12 @@ import customtkinter as ctk
 
 
 class CTkMovingFrame(ctk.CTkFrame):
+    '''CTk Frame with movement possibility.
+    It is not recommended to use the `ms` parameter, because it
+    doesn't work the way it is supposed to in tkinter.
+    Use `frequency` parameter instead - a "tick"
+    that happens every `ms` time.
+    '''
     def __init__(
             self,
             master,
@@ -256,16 +262,16 @@ class _App(ctk.CTk):
         self.down_panel_button.grid(column=0, row=4)
 
     def left_panel_button_callback(self):
-        # self.left_panel.place(relx=.1, rely=.5, relwidth=.25, relheight=.8, anchor='e')
-        self.right_panel.unplace()
+        self.left_panel.place(relx=.1, rely=.5, relwidth=.25, relheight=.8, anchor='e')
+        # self.right_panel.unplace()
 
     def right_panel_button_callback(self):
         self.right_panel.place(relx=.9, rely=.5, relwidth=.2, relheight=.8, anchor='w')
         # self.left_panel.unplace()
 
     def upper_panel_button_callback(self):
-        # self.upper_panel.place(relx=.75, rely=0, relwidth=.2, relheight=.33, anchor='s')
-        self.down_panel.unplace()
+        self.upper_panel.place(relx=.75, rely=0, relwidth=.2, relheight=.33, anchor='s')
+        # self.down_panel.unplace()
 
     def down_panel_button_callback(self):
         self.down_panel.place(relx=.75, rely=1, relwidth=.2, relheight=.33, anchor='n')
